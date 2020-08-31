@@ -1,0 +1,158 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Azaleia Rosa",
+      "urlFoto": "assets/images/azaleia.jpg",
+      "descricao": "Vaso de azaléias plantadas na cor rosa ",
+      "valor": 49.90,
+      "dimensoes": {
+        "largura": "12 cm",
+        "altura": "20 cm",
+        "diametro": "20 cm"
+      },
+      "ativo": true,
+      "categoria": "Plantados"
+    },
+    {
+      "id": 2,
+      "nome": "Suculenta em vaso",
+      "urlFoto": "assets/images/bulbassaur.jpg",
+      "descricao": "Suculentas plantadas em vaso de monstrinho na cor verde",
+      "valor": 49.90,
+      "dimensoes": {
+        "largura": "12 cm",
+        "altura": "10 cm",
+        "diametro": "12 cm"
+      },
+      "ativo": true,
+      "categoria": "Vasos"
+    },
+    {
+      "id": 3,
+      "nome": "Buquê de Girassóis e Rosas",
+      "urlFoto": "assets/images/buqueGirassolRosa.jpg",
+      "descricao": "Buquê de girassóis e rosas vermelhas com ",
+      "valor": 149.90,
+      "dimensoes": {
+        "largura": "50 cm",
+        "altura": "35 cm",
+        "diametro": "50 cm"
+      },
+      "ativo": true,
+      "categoria": "Buquês"
+    },
+    {
+      "id": 4,
+      "nome": "Buquê de Rosas com Rafaello",
+      "urlFoto": "assets/images/buqueRosasRafaello.jpg",
+      "descricao": "Buquê de rosas vermelhas com caixa de Rafaello",
+      "valor": 199.90,
+      "dimensoes": {
+        "largura": "15 cm",
+        "altura": "30 cm",
+        "diametro": "15 cm"
+      },
+      "ativo": true,
+      "categoria": "Kits"
+    },
+    {
+      "id": 5,
+      "nome": "Cactos",
+      "urlFoto": "assets/images/cactos.jpg",
+      "descricao": "Mini jardim de cactos, suporte de madeira com  mini vasos de cactos de diversos tipos",
+      "valor": 69.90,
+      "dimensoes": {
+        "largura": "30 cm",
+        "altura": "18 cm",
+        "diametro": "14 cm"
+      },
+      "ativo": true,
+      "categoria": "Kits"
+    },
+    {
+      "id": 6,
+      "nome": "Ciclamen",
+      "urlFoto": "assets/images/ciclamen.jpg",
+      "descricao": "Vaso de ciclamen plantadas na cor vermelha. É uma flor única que tem origem na Europa e na Ásia e de destaca pela beleza de suas pétalas e cor.",
+      "valor": 59.90,
+      "dimensoes": {
+        "largura": "12 cm",
+        "altura": "30 cm",
+        "diametro": "12 cm"
+      },
+      "ativo": true,
+      "categoria": "Plantados"
+    },
+    {
+      "id": 7,
+      "nome": "Cesta de café da manhã",
+      "urlFoto": "assets/images/gerbera.jpg",
+      "descricao": "Cesta de café da manha com gerberas e rosas. Contém: 1 Sachê de Café, 1 Achocolatado, 1 Capuccino, 2 Sachês de açúcar, 2 Bolachas doces, 2 Bolachas salgadas, 1 Bolinho, 1 Iogurte, 2 Manteigas 10g, 1 Patê, Pães, 1 Maçã e 1 Cesta",
+      "valor": 250.00,
+      "dimensoes": {
+        "largura": "21 cm",
+        "altura": "35 cm",
+        "diametro": "35 cm"
+      },
+      "ativo": true,
+      "categoria": "Cestas"
+    },
+    {
+      "id": 8,
+      "nome": "Cesta de chocolates",
+      "urlFoto": "assets/images/cestaRosas.jpg",
+      "descricao": "Cesta de chocolates com urso de pelúcia e arranjo de rosas tingidas de azul. Contém: 1 barra de 100g de diamante negro, 1 barra de 100g de galak, 1 barra de 100g de laka, 6 bomboms sortidos nestlé, 1 urso de pelúcia, 1 arranjo de rosas tingidas de azul e 1 Cesta",
+      "valor": 250.00,
+      "dimensoes": {
+        "largura": "21 cm",
+        "altura": "35 cm",
+        "diametro": "35 cm"
+      },
+      "ativo": true,
+      "categoria": "Cestas"
+    },
+    {
+      "id": 9,
+      "nome": "Orquidea Roxa",
+      "urlFoto": "assets/images/orquideaRoxa.jpg",
+      "descricao": "Orquídea plantada Phalaenopsis Roxa",
+      "valor": 250.00,
+      "dimensoes": {
+        "largura": "15 cm",
+        "altura": "35 cm",
+        "diametro": "15 cm"
+      },
+      "ativo": true,
+      "categoria": "Plantados"
+    },
+    {
+      "id": 10,
+      "nome": "Arranjo de rosas amarelas",
+      "urlFoto": "assets/images/rosas.jpg",
+      "descricao": "Arranjo de rosas amarelas",
+      "valor": 75.00,
+      "dimensoes": {
+        "largura": "11 cm",
+        "altura": "17 cm",
+        "diametro": "11 cm"
+      },
+      "ativo": true,
+      "categoria": "Arranjos"
+    },
+    {
+      "id": 11,
+      "nome": "Vaso Darth",
+      "urlFoto": "assets/images/vasoDarth.jpg",
+      "descricao": "Arranjo de flores do campo sortidas em vaso de capacete",
+      "valor": 69.00,
+      "dimensoes": {
+        "largura": "17 cm",
+        "altura": "20 cm",
+        "diametro": "17 cm"
+      },
+      "ativo": true,
+      "categoria": "Vasos"
+    }
+  ]
+}

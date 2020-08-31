@@ -1,0 +1,49 @@
+<mat-toolbar class="app-title">Produtos Cadastrados</mat-toolbar>
+
+<!-- <mat-card class="float-left margin10 filtro-listagem" >
+  <form autocomplete="off" novalidate [formGroup]="filtrosListagem">
+    <div class="float-left width50">
+      <div class="padding10">
+        <tco-input-text titulo="Pesquise aqui"
+                        controlName="texto"
+                        [formGroup]="filtrosListagem">
+        </tco-input-text>
+      </div>
+    </div>
+    <div class="float-left width50">
+      <div class="padding10">
+        <tco-input-select titulo="Categorias"
+                          controlName="categoria"
+                          [opcoes]="categorias"
+                          [formGroup]="filtrosListagem">
+        </tco-input-select>
+      </div>
+    </div>
+  </form>
+</mat-card> -->
+
+<div  class="home-content"
+      infiniteScroll
+      (scrolled)="onScroll()"
+      *ngIf="produtos.length; else semRegistro">
+  <mat-card class="home-card" *ngFor="let produto of produtos">
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title>{{produto.nome}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="produto.urlFoto || semFoto" >
+    <mat-card-content>
+      <p class="quebrar-linha">
+        {{produto.valor | currency:'BRL'}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button color="accent" mat-raised-button (click)="abrir(produto.id)">ABRIR</button>
+      <button color="primary" mat-raised-button (click)="adicionarAoCarrinho(produto.id)" style="color: white">ADICIONAR AO CARRINHO</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+</ng-template>

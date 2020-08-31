@@ -1,0 +1,24 @@
+<mat-list *ngIf="produto; else semRegistro">
+  <mat-list-item style="margin-left: 50vh; font-weight: bold;"> {{produto.nome}} </mat-list-item>
+  <mat-list-item style="margin-left: 50vh;"> Valor: {{produto.valor | currency:'BRL'}} </mat-list-item>
+  <mat-list-item class="quebrar-linha" style="margin-left: 50vh;"> Descrição: {{produto.descricao}} </mat-list-item>
+  <mat-list-item style="margin-left: 50vh;"> Dimensões: largura: {{produto.dimensoes.largura}} </mat-list-item>
+  <mat-list-item style="margin-left: 50vh;"> altura: {{produto.dimensoes.altura}} </mat-list-item>
+  <mat-list-item style="margin-left: 50vh;"> diametro: {{produto.dimensoes.diametro}} </mat-list-item>
+  <img mat-card-image [src]="produto.urlFoto || semFoto" >
+</mat-list>
+<mat-card>
+  <mat-card-actions *ngIf="false">
+    <!---->
+    <button color="accent" mat-raised-button (click)="editar()" style="margin-left: 50vh;">Editar</button>
+    <button color="warn" mat-raised-button (click)="excluir()">Inativar</button>
+  </mat-card-actions>
+  <mat-card-actions >
+    <button color="accent" mat-raised-button (click)="goHome()" style="margin-left: 50vh;">Voltar</button>
+    <button color="primary" mat-raised-button (click)="adicionarAoCarrinho(produto.id)" style="color: white">ADICIONAR AO CARRINHO</button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+</ng-template>

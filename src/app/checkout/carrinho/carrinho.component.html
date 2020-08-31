@@ -1,0 +1,46 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Carrinho</ng-template>
+      <tco-listagem-carrinho></tco-listagem-carrinho>
+      <div style="margin-top: 20px;">
+        <button mat-button mat-button (click)="goHome()">Continuar comprando</button>
+        <button mat-button matStepperNext>Próximo passo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Identificação</ng-template>
+    <tco-identificacao></tco-identificacao>
+    <div style="margin-top: 20px;">
+      <button mat-button matStepperPrevious>Passo Anterior</button>
+      <button mat-button matStepperNext>Próximo Passo</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Entrega</ng-template>
+      <tco-entrega></tco-entrega>
+      <div style="margin-top: 20px;">
+        <button mat-button matStepperPrevious>Passo Anterior</button>
+        <button mat-button matStepperNext>Próximo Passo</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <ng-template matStepLabel>Pagamento</ng-template>
+    <tco-pagamento></tco-pagamento>
+    <div style="margin-top: 20px;">
+      <button mat-button matStepperPrevious>Passo Anterior</button>
+      <button mat-button matStepperNext>Próximo Passo</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirmação</ng-template>
+    <p>Confirma o pedido?</p>
+    <div style="margin-top: 20px;">
+      <button mat-button matStepperPrevious>Passo Anterior</button>
+      <button mat-button (click)="stepper.reset()">Confirma</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

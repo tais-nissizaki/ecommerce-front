@@ -1,0 +1,82 @@
+<mat-sidenav-container class="sidenav-container" (backdropClick)="closeSideNav()">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" *ngIf="false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list (click)="closeSideNav()">
+      <a mat-list-item [routerLink]="['/produtos']">Inicial</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item [routerLink]="['/produtos/cadastro']">Cadastrar novo Produto</a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <form autocomplete="off" novalidate [formGroup]="filtrosListagem">
+      <mat-toolbar color="#FFFFFF" style="height: 120px;">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="openSideNav()" *ngIf="false">
+          <mat-icon aria-label="Side nav toggle icon"> menu</mat-icon>
+        </button>
+        <button type="button" mat-button (click)="goHome()">
+          <img src="assets/images/Matsunoki.png" height="60" alt="">
+        </button>
+        <div layout="row" style=" margin: auto; width: 800px;">
+          <mat-form-field style="width: 100%;">
+            <input type="text"
+                  placeholder="Pesquisar..."
+                  aria-label="`Produtos"
+                  matInput
+                  formControlName="texto"
+                  [matAutocomplete]="auto">
+            <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete> -->
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        
+        <button mat-icon-button style="margin-right: 20px; font-size: 30px" (click)="abrirCarrinho()">
+          <mat-icon [matBadge]="quantidadeItensCarrinho" [inline]="true">shopping_cart</mat-icon>
+        </button>
+        <button mat-icon-button style="margin-right: 20px; font-size: 30px;" (click)="abrirLogin()">
+          <mat-icon [inline]="true">person</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <mat-toolbar color="#FFFFFF">
+        <mat-button-toggle-group formControlName="categoria" style="min-height: 50px; margin: auto;" multiple (change)="toggleChange($event)">
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Plantados">Plantados</mat-button-toggle>
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Vasos">Vasos</mat-button-toggle>
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Buques">Buquês</mat-button-toggle>
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Kits">Kits</mat-button-toggle>
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Arranjos">Arranjos</mat-button-toggle>
+          <mat-button-toggle style="font-size: 18px; width: 180px;" value="Cestas">Cestas</mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- <div layout="row" style="min-height: 50px; margin: auto;">
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Plantados')">Plantados</button>
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Vasos')">Vasos</button>
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Buques')">Buquês</button>
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Kits')">Kits</button>
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Arranjos')">Arranjos</button>
+          <button mat-button style="font-size: 18px; width: 180px;" (click)="filtrarporCategoria('Cestas')">Cestas</button>
+        </div> -->
+      </mat-toolbar>
+
+      <div class="app-content">
+        <router-outlet></router-outlet>
+      </div>
+    </form>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Conta</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>settings</mat-icon>
+    <span>Configurações</span>
+  </button>
+</mat-menu>

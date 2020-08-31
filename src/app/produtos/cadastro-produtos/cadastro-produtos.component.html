@@ -1,0 +1,21 @@
+<mat-toolbar class="app-title">Cadastrar Produto</mat-toolbar>
+<div class="main-div">
+  <mat-card class="center width50" *ngIf="cadastro" >
+    <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+      <mat-card-content>
+        <tco-input-text titulo="Nome *" controlName="nome" [formGroup]="cadastro"></tco-input-text>
+        <tco-input-text titulo="Link Foto" controlName="urlFoto" [formGroup]="cadastro"></tco-input-text>
+        <tco-input-textarea titulo="Descrição" controlName="descricao" [formGroup]="cadastro"></tco-input-textarea>
+        <tco-input-number titulo="Valor *" controlName="valor" step="0.01" [formGroup]="cadastro"></tco-input-number>
+        <tco-input-text titulo="altura *" controlName="altura" [formGroup]="cadastro"></tco-input-text>
+        <tco-input-text titulo="largura *" controlName="largura" [formGroup]="cadastro"></tco-input-text>
+        <tco-input-text titulo="diametro *" controlName="diametro" [formGroup]="cadastro"></tco-input-text>
+        <tco-input-select titulo="categoria *" [opcoes]="categorias" controlName="categoria" [formGroup]="cadastro"></tco-input-select>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" color="accent" mat-raised-button>Salvar</button>
+        <button type="reset" color="warn" mat-raised-button>Cancelar</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

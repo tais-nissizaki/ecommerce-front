@@ -1,0 +1,65 @@
+<mat-list>
+  <mat-list-item>
+    
+  <mat-label>Total de pedidos: </mat-label>
+  <mat-label style="margin-left: 10px;">1</mat-label>
+
+</mat-list-item>
+<mat-divider></mat-divider>
+<mat-list-item>
+    
+  <mat-label>Número do Pedido: </mat-label>
+  <mat-label style="margin-left: 10px;">1234</mat-label>
+
+</mat-list-item>
+<mat-list-item>
+    
+  <mat-label>Status: </mat-label>
+  <mat-label style="margin-left: 10px;">Aguardando Aprovação</mat-label>
+
+</mat-list-item>
+<mat-divider></mat-divider>
+<table
+  mat-table
+  [dataSource]="produtosCarrinho"
+  class="mat-elevation-z1"
+  style="width: 100%"
+>
+  <ng-container matColumnDef="urlFoto">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let itemCarrinho">
+      <img [src]="itemCarrinho.produto.urlFoto" height="80" alt="" />
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let itemCarrinho">
+      {{ itemCarrinho.produto.nome }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let itemCarrinho">
+      {{ itemCarrinho.produto.valor | currency: "BRL" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="quantidade">
+    <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+    <td mat-cell *matCellDef="let itemCarrinho">
+      {{itemCarrinho.quantidade}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="valorTotal">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let itemCarrinho">
+      {{ itemCarrinho.valorTotal | currency: "BRL" }}
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<div class="mt-10" style="text-align: end;">
+  <div>Desconto {{desconto | currency:"BRL"}}</div>
+  <div>Total {{totalCarrinho | currency:"BRL"}}</div>
+</div>
+</mat-list>

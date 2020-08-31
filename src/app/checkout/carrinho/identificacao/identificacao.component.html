@@ -1,0 +1,91 @@
+<form [formGroup]="secondFormGroup">
+      
+  <mat-list>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="seunome@dominio.com" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" placeholder="" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Confirme a senha</mat-label>
+        <input matInput type="password" placeholder="" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  <mat-list>
+    <mat-list-item>Cadastro</mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Nome Completo</mat-label>
+        <input matInput placeholder="Nome e Sobrenome" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="123.456.789-10" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput placeholder="01/01/2001" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="(11)4321-1234" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+  <mat-list>
+    <mat-list-item>Endereço Residencial</mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Logradouro</mat-label>
+        <input matInput placeholder="Rua, Avenida, Praça..." formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>número</mat-label>
+        <input matInput placeholder="123" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field class="ml-10">
+        <mat-label>complemento</mat-label>
+        <input matInput placeholder="apartamento, bloco" formControlName="secondCtrl">
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Bairro</mat-label>
+        <input matInput placeholder="" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field class="ml-10">
+        <mat-label>Cidade</mat-label>
+        <input matInput placeholder="" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="SP, MG" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <mat-form-field class="ml-10">
+        <mat-label>CEP</mat-label>
+        <input matInput placeholder="08900-000" formControlName="secondCtrl" required>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+</form>
