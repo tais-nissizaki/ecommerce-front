@@ -1,62 +1,147 @@
-<mat-list>
-  <mat-list-item style="font-weight: bold;">Cadastro</mat-list-item>
-  <mat-list-item>
-      <mat-label>Nome Completo: </mat-label>
-      <mat-label style="margin-left: 10px;">João da Silva</mat-label>
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>CPF: </mat-label>
-      <mat-label style="margin-left: 10px;">123.456.789-10</mat-label>
-    
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>Data de nascimento: </mat-label>
-      <mat-label style="margin-left: 10px;">01/01/2001</mat-label>
-    
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>Telefone: </mat-label>
-      <mat-label style="margin-left: 10px;">(11)4321-1234</mat-label>
-    
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
-<mat-list>
-  <mat-list-item style="font-weight: bold;">Endereço Residencial</mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>Logradouro: </mat-label>
-      <mat-label style="margin-left: 10px;">Rua das Flores</mat-label>
-    
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>número: </mat-label>
-      <mat-label style="margin-left: 10px;">123</mat-label>
-    
-      <mat-label style="margin-left: 10px;">complemento: </mat-label>
-      <mat-label style="margin-left: 10px;">casa 2</mat-label>
-    
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>Bairro: </mat-label>
-      <mat-label style="margin-left: 10px;">Cerejeira</mat-label>
-    
-      <mat-label style="margin-left: 10px;">Cidade: </mat-label>
-      <mat-label style="margin-left: 10px;">Mogi das Cruzes</mat-label>
-    
-  </mat-list-item>
-  <mat-list-item>
-    
-      <mat-label>Estado: </mat-label>
-      <mat-label style="margin-left: 10px;">SP</mat-label>
-
-      <mat-label style="margin-left: 10px;">CEP: </mat-label>
-      <mat-label style="margin-left: 10px;">08900-000</mat-label>
-    
-  </mat-list-item>
-</mat-list>
+<div class="home-content">
+    <mat-list *ngIf="cliente; else semRegistro">
+        <mat-list>
+            <mat-list-item > Login:  {{cliente.usuario.login}} </mat-list-item>
+                <mat-list-item>
+                    <button color="accent" mat-raised-button (click)="alterarSenha()" style="margin-left: 50vh;">Alterar senha</button>
+                </mat-list-item>
+            <mat-list-item *ngIf="isAlterarSenha">
+                <mat-list-item>
+                    <tco-input-text titulo="Senha *" tipo="password" placeholder="Escolha letras maiusculas, minusculas e caracteres especiais" controlName="senha" [formGroup]="firstFormGroup"></tco-input-text>
+                    <tco-input-text titulo="Confirme a senha *" tipo="password" controlName="senha" [formGroup]="firstFormGroup"></tco-input-text>
+                </mat-list-item>
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item style="font-weight: bold;">Cadastro</mat-list-item>
+            <mat-list-item > Nome:  {{cliente.nome.nome}} </mat-list-item>
+            <mat-list-item > CPF:  {{cliente.cpf}} </mat-list-item>
+            <mat-list-item > Gênero:  {{cliente.genero}} </mat-list-item>
+            <mat-list-item > Data de nascimento:  {{cliente.dtNasc | date: 'dd/MM/yyyy'}} </mat-list-item>
+            <mat-list-item>
+                <mat-list-item > Tipo de telefone:  {{cliente.telefone[0].tipoTelefone}} </mat-list-item>
+                <mat-list-item > DDD:  {{cliente.telefone[0].ddd}} </mat-list-item>
+                <mat-list-item > Telefone:  {{cliente.telefone[0].numero}} </mat-list-item>
+            </mat-list-item>
+            <mat-list-item>
+                <button color="accent" mat-raised-button (click)="alterarCadastro()" style="margin-left: 50vh;">Alterar Cadastro</button>
+            </mat-list-item>
+            <mat-list *ngIf="isAlterarCadastro">
+                <mat-list-item>
+                    <tco-input-text titulo="Nome Completo *" placeholder="Nome e Sobrenome" controlName="nome" [formGroup]="firstFormGroup"></tco-input-text>
+                </mat-list-item>
+                <mat-list-item>
+                    <tco-input-text titulo="CPF *" placeholder="123.456.789-10" controlName="cpf" [formGroup]="firstFormGroup"></tco-input-text>
+                </mat-list-item>
+                <mat-list-item>
+                    <tco-input-select titulo="Gênero" controlName="genero" [formGroup]="firstFormGroup" [opcoes]="generos"></tco-input-select>
+                </mat-list-item>
+                <mat-list-item>
+                    <tco-input-date titulo="Data de nascimento" controlName="dtNasc" [formGroup]="firstFormGroup"></tco-input-date>
+                </mat-list-item>
+                <mat-list-item>
+                    <tco-input-select titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="firstFormGroup" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
+                    <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                    <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="firstFormGroup">
+                    </tco-input-text>
+                </mat-list-item>
+            </mat-list>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item style="font-weight: bold;">Endereço Residencial</mat-list-item>
+            <mat-list-item> Descrição:  {{cliente.endereco[0].descricao}} </mat-list-item>
+            <mat-list-item>
+                <mat-list-item>Tipo Logradouro:  {{cliente.endereco[0].tipoLogradouro}} </mat-list-item>
+                <mat-list-item>Logradouro:  {{cliente.endereco[0].logradouro}} </mat-list-item>
+                <mat-list-item>Número:  {{cliente.endereco[0].numero}} </mat-list-item>
+            </mat-list-item> 
+            <mat-list-item >
+                <mat-list-item> Tipo de Residência:  {{cliente.endereco[0].tipoResidencia}} </mat-list-item>
+                <mat-list-item > Complemento e/ou Descrição:  {{cliente.endereco[0].descricao}} </mat-list-item>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-list-item > Bairro:  {{cliente.endereco[0].bairro}} </mat-list-item>
+                <mat-list-item > Cidade:  {{cliente.endereco[0].cidade.cidade}} </mat-list-item>
+                <mat-list-item > Estado:  {{cliente.endereco[0].cidade.estado}} </mat-list-item>
+            </mat-list-item>
+            <mat-list-item> CEP:  {{cliente.endereco[0].cep}} </mat-list-item>
+        </mat-list>
+        <mat-list-item>
+            <button color="accent" mat-raised-button (click)="alterarEnderecoCobranca()" style="margin-left: 50vh;">Alterar Endereço</button>
+        </mat-list-item>
+        <mat-list *ngIf="isAlterarEndereco">
+            <mat-list-item>
+                <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Número *" controlName="numero" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="firstFormGroup" [opcoes]="estados">
+                </tco-input-select>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item style="font-weight: bold;">Endereço de Entrega</mat-list-item>
+            <mat-list-item> Descrição:  {{cliente.endereco[1].descricao}} </mat-list-item>
+            <mat-list-item>
+                <mat-list-item>Tipo Logradouro:  {{cliente.endereco[1].tipoLogradouro}} </mat-list-item>
+                <mat-list-item>Logradouro:  {{cliente.endereco[1].logradouro}} </mat-list-item>
+                <mat-list-item>Número:  {{cliente.endereco[1].numero}} </mat-list-item>
+            </mat-list-item> 
+            <mat-list-item >
+                <mat-list-item> Tipo de Residência:  {{cliente.endereco[1].tipoResidencia}} </mat-list-item>
+                <mat-list-item > Complemento e/ou Descrição:  {{cliente.endereco[1].descricao}} </mat-list-item>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-list-item > Bairro:  {{cliente.endereco[1].bairro}} </mat-list-item>
+                <mat-list-item > Cidade:  {{cliente.endereco[1].cidade.cidade}} </mat-list-item>
+                <mat-list-item > Estado:  {{cliente.endereco[1].cidade.estado}} </mat-list-item>
+            </mat-list-item>
+            <mat-list-item> CEP:  {{cliente.endereco[0].cep}} </mat-list-item>
+        </mat-list>
+        <mat-list-item>
+            <button color="accent" mat-raised-button (click)="alterarEnderecoCobranca()" style="margin-left: 50vh;">Alterar Endereço</button>
+        </mat-list-item>
+        <mat-list *ngIf="isAlterarEndereco">
+            <mat-list-item>
+                <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Número *" controlName="numero" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="firstFormGroup" [opcoes]="estados">
+                </tco-input-select>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+        </mat-list>
+    </mat-list>
+    <ng-template #semRegistro>
+        <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+    </ng-template>
+</div>

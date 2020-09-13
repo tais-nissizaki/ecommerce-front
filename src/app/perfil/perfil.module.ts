@@ -7,15 +7,18 @@ import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
 import { CamposModule } from '../shared/components/campos/campos.module';
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { CheckoutModule } from '../checkout/checkout.module';
 
 @NgModule({
-  declarations: [ClienteComponent, AdministradorComponent, PedidosComponent, DadosComponent],
+  declarations: [ClienteComponent, AdministradorComponent, PedidosComponent, DadosComponent, CadastroComponent],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule,
     ReactiveFormsModule,
-    CamposModule
+    CamposModule,
+    CheckoutModule
   ]
 })
 export class PerfilModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith, debounceTime } from "rxjs/operators"
 import { ProdutosService } from 'src/app/core/produtos.service';
@@ -106,10 +106,23 @@ export class TopoComponent implements OnInit {
   selector: 'tco-dialog-elements-login',
   templateUrl: 'dialog.login.html',
 })
-export class DialogElements {
-  constructor(private router:Router){ }
+export class DialogElements implements OnInit {
 
+  fifthFormGroup: FormGroup;
+  constructor(private router:Router,
+              private _formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.fifthFormGroup = this._formBuilder.group({
+      fifthCtrl: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(8)]],
+    })
+  }
   abrirCliente(){
     this.router.navigateByUrl("/cliente")
+  }
+  abrirCadastro(){
+    this.router.navigateByUrl("/cliente/cadastro")
   }
 }

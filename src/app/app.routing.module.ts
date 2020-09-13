@@ -8,6 +8,7 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { CarrinhoComponent } from './checkout/carrinho/carrinho.component';
 import { ClienteComponent } from './perfil/cliente/cliente.component';
 import { PerfilModule } from './perfil/perfil.module';
+import { CadastroComponent } from './perfil/cadastro/cadastro.component';
 
 const routes: Routes = [
 
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'cliente',
     component: ClienteComponent
+  },
+  {
+    path: 'cliente/cadastro',
+    component: CadastroComponent
   },
   { path: '**', redirectTo: 'produtos' },
 

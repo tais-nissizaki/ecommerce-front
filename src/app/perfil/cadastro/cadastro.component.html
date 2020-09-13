@@ -1,0 +1,68 @@
+
+        <form [formGroup]="cadastro" novalidate>
+<div  class="home-content">
+    <div > 
+
+            <mat-list>
+              <mat-list-item>
+                <tco-input-text titulo="E-mail *" placeholder="seunome@dominio.com" controlName="email" [formGroup]="cadastro"></tco-input-text>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Senha *" tipo="password" placeholder="Escolha letras maiusculas, minusculas e caracteres especiais" controlName="senha" [formGroup]="cadastro"></tco-input-text>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Confirme a senha *" tipo="password" controlName="confirmaSenha" [formGroup]="cadastro"></tco-input-text>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+            <mat-list>
+              <mat-list-item>Cadastro</mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Nome Completo *" placeholder="Nome e Sobrenome" controlName="nome" [formGroup]="cadastro"></tco-input-text>
+              </mat-list-item>
+              <mat-list-item >
+                <tco-input-text titulo="CPF *" placeholder="123.456.789-10" controlName="cpf" [formGroup]="cadastro"></tco-input-text>
+              </mat-list-item>
+              <mat-list-item >
+                <tco-input-select titulo="Gênero" controlName="genero" [formGroup]="cadastro" [opcoes]="generos"></tco-input-select>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-date titulo="Data de nascimento" controlName="dtNasc" [formGroup]="cadastro"></tco-input-date>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-select titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="cadastro" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
+                <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="cadastro" ></tco-input-text>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+            <mat-list>
+              <mat-list-item>Endereço Residencial</mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="cadastro" ></tco-input-text>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Número *" controlName="numero" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>  
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="cadastro" [opcoes]="estados" ></tco-input-select>
+              </mat-list-item>
+              <mat-list-item>
+                <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="cadastro" ></tco-input-text>
+              </mat-list-item>
+            </mat-list>
+    </div>
+    <div style="display:flex; justify-content: center;">
+        <button (click)="submit()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+        <button type="reset" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
+    </div>
+</div>
+</form>

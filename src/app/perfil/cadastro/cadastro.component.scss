@@ -3,6 +3,6 @@
     flex-wrap: wrap;
     width: calc(100% - 20px);
     justify-content: space-between;
-     padding: 10px;
-     overflow: hidden;
+    padding: 10px;
+    flex-direction: column;
   }

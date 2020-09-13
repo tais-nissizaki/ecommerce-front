@@ -154,5 +154,184 @@
       "ativo": true,
       "categoria": "Vasos"
     }
+  ],
+  "clientes": [
+    {
+      "usuario": {
+        "id": 1,
+        "ativo": true,
+        "confirmaSenha": "abcABC!@#",
+        "login": "MARIA.SILVA@TESTE.COM",
+        "senha": "abcABC!@#"
+      },
+      "id": 1,
+      "nome": {
+        "nome": "MARIA DA SILVA"
+      },
+      "genero": "FEMININO", 
+      "ativo": true,
+      "cpf": "829.955.110-22",
+      "dtNasc": "1987-09-12",
+      "telefone": [
+        {
+          "id": 1,
+          "ddd": "11",
+          "numero": "23454-0987",
+          "tipoTelefone": "RESIDENCIAL"
+        }
+      ],
+      "endereco": [
+        {
+          "id": 1,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "123",
+         "observacoes": "OBSERVAÇÃO",
+         "tipoEndereco": "ENTREGA",
+         "tipoLogradouro": "RUA",
+         "tipoResidencia": "APARTAMENTO"
+        },
+        {
+          "id": 2,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "123",
+          "observacoes": "OBSERVAÇÃO",
+          "tipoEndereco": "COBRANCA",
+          "tipoLogradouro": "RUA",
+          "tipoResidencia": "APARTAMENTO"
+        }
+      ]
+    },
+    {
+      "usuario": {
+        "id": 2,
+        "ativo": true,
+        "confirmaSenha": "abcABC!@#",
+        "login": "JOAO.SILVA@TESTE.COM",
+        "senha": "abcABC!@#"
+      },
+      "id": 2,
+      "nome": {
+        "nome": "JOÃO SILVA"
+      },
+      "genero": "MASCULINO", 
+      "ativo": true,
+      "cpf": "435.156.320-69",
+      "dtNasc": "1983-03-05",
+      "telefone": [
+        {
+          "id": 2,
+          "ddd": "11",
+          "numero": "93454-0987",
+          "tipoTelefone": "CELULAR"
+        }
+      ],
+      "endereco": [
+        {
+          "id": 3,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "321",
+         "observacoes": "OBSERVAÇÃO",
+         "tipoEndereco": "ENTREGA",
+         "tipoLogradouro": "RUA",
+         "tipoResidencia": "APARTAMENTO"
+        },
+        {
+          "id": 4,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "321",
+          "observacoes": "OBSERVAÇÃO",
+          "tipoEndereco": "COBRANCA",
+          "tipoLogradouro": "RUA",
+          "tipoResidencia": "APARTAMENTO"
+        }
+      ]
+    },
+    {
+      "usuario": {
+        "id": 3,
+        "ativo": true,
+        "confirmaSenha": "abcABC!@#",
+        "login": "ZE.COUVES@TESTE.COM",
+        "senha": "abcABC!@#"
+      },
+      "id": 3,
+      "nome": {
+        "nome": "ZÉ DAS COUVES"
+      },
+      "genero": "OUTROS", 
+      "ativo": true,
+      "cpf": "558.347.050-06",
+      "dtNasc": "1993-10-11",
+      "telefone": [
+        {
+          "id": 3,
+          "ddd": "11",
+          "numero": "93454-0988",
+          "tipoTelefone": "CELULAR"
+        }
+      ],
+      "endereco": [
+        {
+          "id": 5,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "321",
+         "observacoes": "OBSERVAÇÃO",
+         "tipoEndereco": "ENTREGA",
+         "tipoLogradouro": "RUA",
+         "tipoResidencia": "APARTAMENTO"
+        },
+        {
+          "id": 6,
+          "bairro": "CENTRO",
+          "cep": "09876-098",
+          "cidade": {
+            "cidade": "MOGI DAS CRUZES",
+            "estado": "SP"
+          },
+          "descricao": "MINHA CASA",
+          "logradouro": "RUA TESTE",
+          "numero": "321",
+          "observacoes": "OBSERVAÇÃO",
+          "tipoEndereco": "COBRANCA",
+          "tipoLogradouro": "RUA",
+          "tipoResidencia": "APARTAMENTO"
+        }
+      ]
+    }
   ]
 }

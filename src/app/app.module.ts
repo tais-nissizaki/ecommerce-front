@@ -11,6 +11,7 @@ import { AlertaComponent } from './shared/components/alerta/alerta.component';
 import { RodapeComponent } from './shared/components/rodape/rodape.component';
 import { TopoComponent, DialogElements } from './shared/components/topo/topo.component';
 import { MaterialModule } from './shared/material/material.module';
+import { CamposModule } from './shared/components/campos/campos.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MaterialModule } from './shared/material/material.module';
     HttpClientModule,
     LayoutModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CamposModule
   ],
   entryComponents: [AlertaComponent, DialogElements],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],

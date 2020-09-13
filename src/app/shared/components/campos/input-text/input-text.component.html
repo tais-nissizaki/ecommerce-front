@@ -1,6 +1,7 @@
-<div [formGroup]="formGroup">
+<div [formGroup]="formGroup" class="campo-formulario">
   <mat-form-field class="full-width">
     <input  matInput
+            [type]="tipo"
             [placeholder]="titulo"
             [name]="controlName"
             [formControlName]="controlName">
@@ -8,6 +9,7 @@
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'minlength')">
       Campo precisa ter no mínimo {{validacao.lengthValidar(formControl, 'minlength')}} caracteres
     </mat-error>
+    <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'pattern')">Este campo deve ser composto</mat-error>
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'maxlength')">
       Campo pode ter no máximo {{validacao.lengthValidar(formControl, 'maxlength')}} caracteres
     </mat-error>

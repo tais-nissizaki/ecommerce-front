@@ -1,91 +1,59 @@
 <form [formGroup]="secondFormGroup">
-      
+
   <mat-list>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>E-mail</mat-label>
-        <input matInput placeholder="seunome@dominio.com" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="E-mail *" placeholder="seunome@dominio.com" controlName="email" [formGroup]="secondFormGroup"></tco-input-text>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Senha</mat-label>
-        <input matInput type="password" placeholder="" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Senha *" tipo="password" placeholder="Escolha letras maiusculas, minusculas e caracteres especiais" controlName="senha" [formGroup]="secondFormGroup"></tco-input-text>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Confirme a senha</mat-label>
-        <input matInput type="password" placeholder="" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Confirme a senha *" tipo="password" controlName="senha" [formGroup]="secondFormGroup"></tco-input-text>
     </mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>
   <mat-list>
     <mat-list-item>Cadastro</mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Nome Completo</mat-label>
-        <input matInput placeholder="Nome e Sobrenome" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Nome Completo *" placeholder="Nome e Sobrenome" controlName="nome" [formGroup]="secondFormGroup"></tco-input-text>
+    </mat-list-item>
+    <mat-list-item >
+      <tco-input-text titulo="CPF *" placeholder="123.456.789-10" controlName="cpf" [formGroup]="secondFormGroup"></tco-input-text>
+    </mat-list-item>
+    <mat-list-item >
+      <tco-input-select titulo="Gênero" controlName="genero" [formGroup]="secondFormGroup" [opcoes]="generos"></tco-input-select>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>CPF</mat-label>
-        <input matInput placeholder="123.456.789-10" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-date titulo="Data de nascimento" controlName="dtNasc" [formGroup]="secondFormGroup"></tco-input-date>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Data de nascimento</mat-label>
-        <input matInput placeholder="01/01/2001" formControlName="secondCtrl" required>
-      </mat-form-field>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-form-field>
-        <mat-label>Telefone</mat-label>
-        <input matInput placeholder="(11)4321-1234" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-select titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="secondFormGroup" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
+      <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="secondFormGroup" ></tco-input-text>
     </mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>
   <mat-list>
     <mat-list-item>Endereço Residencial</mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Logradouro</mat-label>
-        <input matInput placeholder="Rua, Avenida, Praça..." formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="secondFormGroup" ></tco-input-text>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>número</mat-label>
-        <input matInput placeholder="123" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <mat-form-field class="ml-10">
-        <mat-label>complemento</mat-label>
-        <input matInput placeholder="apartamento, bloco" formControlName="secondCtrl">
-      </mat-form-field>
+      <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-text titulo="Número *" controlName="numero" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Bairro</mat-label>
-        <input matInput placeholder="" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <mat-form-field class="ml-10">
-        <mat-label>Cidade</mat-label>
-        <input matInput placeholder="" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>  
     </mat-list-item>
     <mat-list-item>
-      <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <input matInput placeholder="SP, MG" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <mat-form-field class="ml-10">
-        <mat-label>CEP</mat-label>
-        <input matInput placeholder="08900-000" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="secondFormGroup" style="margin-right: 40px;"></tco-input-text>
+      <tco-input-select titulo="Estado" controlName="estado" [formGroup]="secondFormGroup" [opcoes]="estados" ></tco-input-select>
+    </mat-list-item>
+    <mat-list-item>
+      <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="secondFormGroup" ></tco-input-text>
     </mat-list-item>
   </mat-list>
 </form>

@@ -17,6 +17,9 @@ import { PagamentoComponent } from './carrinho/pagamento/pagamento.component';
     MaterialModule,
     ReactiveFormsModule,
     CamposModule
+  ],
+  exports: [
+    IdentificacaoComponent
   ]
 })
 export class CheckoutModule { }

@@ -82,7 +82,11 @@ export class CadastroProdutosComponent implements OnInit {
       descricao: null,
       valor: null,
       categoria: null,
-      dimensoes: null
+      dimensoes: {
+        altura: null,
+        largura: null,
+        diametro: null
+      }
     } as Produto;
   }
 

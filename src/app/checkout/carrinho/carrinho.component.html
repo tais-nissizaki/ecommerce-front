@@ -38,6 +38,9 @@
   <mat-step>
     <ng-template matStepLabel>Confirmação</ng-template>
     <p>Confirma o pedido?</p>
+    <tco-listagem-carrinho></tco-listagem-carrinho>
+    <p style="margin-left: 168vh;">Frete R$13,90</p>
+    <p style="margin-left: 167vh;">Total R$216,31</p>
     <div style="margin-top: 20px;">
       <button mat-button matStepperPrevious>Passo Anterior</button>
       <button mat-button (click)="stepper.reset()">Confirma</button>

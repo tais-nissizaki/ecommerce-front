@@ -1,77 +1,25 @@
 <form [formGroup]="fourthFormGroup">
-      
-  <mat-radio-group formControlName="meioPagamento">
-    <mat-list>
-      <mat-list-item>
-        <mat-radio-button value="after">Cartão de Crédito</mat-radio-button>
-      </mat-list-item>
-      <div *ngIf="fourthFormGroup.value.meioPagamento=='after'">
-        <div *ngFor="let i of quantidadeCartoesCredito">
-          <mat-list-item>
-            <mat-radio-group>
-              <mat-radio-button value="after">Visa</mat-radio-button>
-              <mat-radio-button class="ml-10" value="before">Master</mat-radio-button>
-            </mat-radio-group>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-form-field style="width: 300px;">
-              <mat-label>Número do Cartão</mat-label>
-              <input matInput placeholder="0000 0000 0000" formControlName="fourthCtrl" required>
-            </mat-form-field>
-            <mat-form-field class="ml-10">
-              <mat-label>CVV</mat-label>
-              <input matInput placeholder="000" formControlName="fourthCtrl" required>
-            </mat-form-field>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-form-field style="width: 300px;">
-              <mat-label>Nome impresso no cartão</mat-label>
-              <input matInput placeholder="Nome impresso" formControlName="fourthCtrl" required>
-            </mat-form-field>
-            <mat-form-field class="ml-10">
-              <mat-label>Validade</mat-label>
-              <input matInput placeholder="12/2028" formControlName="fourthCtrl" required>
-            </mat-form-field>
-          </mat-list-item>
-        </div>
-        <button mat-flat-button color="primary" style="color: white" (click)="adicionarCartaoCredito()">Pagar com mais um cartão</button>
-      </div>
-      <mat-list-item>
-        <mat-radio-button value="before">Cartão Débito</mat-radio-button>
-      </mat-list-item>
-      
-      <div *ngIf="fourthFormGroup.value.meioPagamento=='before'">
-        <div *ngFor="let i of quantidadeCartoesDebito">
-          <mat-list-item>
-            <mat-radio-group>
-              <mat-radio-button value="after">Visa Electron</mat-radio-button>
-              <mat-radio-button class="ml-10" value="before">Maestro</mat-radio-button>
-            </mat-radio-group>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-form-field style="width: 300px;">
-              <mat-label>Número do Cartão</mat-label>
-              <input matInput placeholder="0000 0000 0000" formControlName="fourthCtrl" required>
-            </mat-form-field>
-            <mat-form-field class="ml-10">
-              <mat-label>CVV</mat-label>
-              <input matInput placeholder="000" formControlName="fourthCtrl" required>
-            </mat-form-field>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-form-field style="width: 300px;">
-              <mat-label>Nome impresso no cartão</mat-label>
-              <input matInput placeholder="Nome impresso" formControlName="fourthCtrl" required>
-            </mat-form-field>
-            <mat-form-field class="ml-10">
-              <mat-label>Validade</mat-label>
-              <input matInput placeholder="12/2028" formControlName="fourthCtrl" required>
-            </mat-form-field>
-          </mat-list-item>
-        </div>
-        <button mat-flat-button color="primary" style="color: white" (click)="adicionarCartaoDebito()">Pagar com mais um cartão</button>
-      </div>
+  <mat-list>
 
-    </mat-list>
-  </mat-radio-group>
+    <div *ngFor="let i of quantidadeCartoesCredito">
+      <mat-list-item>
+        <tco-input-select titulo="Bandeira" controlName="bandeira" [formGroup]="fourthFormGroup" [opcoes]="bandeiras" style="margin-right: 40px;"></tco-input-select>
+      </mat-list-item>
+      <mat-list-item>
+        <tco-input-text titulo="Número do Cartão" controlName="numero" [formGroup]="fourthFormGroup" style="margin-right: 40px;"></tco-input-text>
+        <tco-input-text titulo="CVV" controlName="cvv" [formGroup]="fourthFormGroup" style="margin-right: 40px;">
+        </tco-input-text>
+      </mat-list-item>
+      <mat-list-item>
+        <tco-input-text titulo="Nome impresso no Cartão" controlName="nome" [formGroup]="fourthFormGroup"style="margin-right: 40px;"></tco-input-text>
+        <tco-input-text titulo="Validade" controlName="validade" [formGroup]="fourthFormGroup" style="margin-right: 40px;"></tco-input-text>
+      </mat-list-item>
+      <mat-list-item>
+        <tco-input-text titulo="Valor" controlName="valor" [formGroup]="fourthFormGroup"></tco-input-text>
+      </mat-list-item>
+    </div>
+    <button mat-flat-button color="primary" style="color: white" (click)="adicionarCartaoCredito()" style="margin: 15px;">Pagar com mais um cartão</button>
+
+  </mat-list>
+
 </form>
