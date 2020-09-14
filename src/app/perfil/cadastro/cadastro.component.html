@@ -24,13 +24,13 @@
                 <tco-input-text titulo="CPF *" placeholder="123.456.789-10" controlName="cpf" [formGroup]="cadastro"></tco-input-text>
               </mat-list-item>
               <mat-list-item >
-                <tco-input-select titulo="Gênero" controlName="genero" [formGroup]="cadastro" [opcoes]="generos"></tco-input-select>
+                <tco-input-select id="genero" titulo="Gênero" controlName="genero" [formGroup]="cadastro" [opcoes]="generos"></tco-input-select>
               </mat-list-item>
               <mat-list-item>
                 <tco-input-date titulo="Data de nascimento" controlName="dtNasc" [formGroup]="cadastro"></tco-input-date>
               </mat-list-item>
               <mat-list-item>
-                <tco-input-select titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="cadastro" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
+                <tco-input-select id="tipoTelefone" titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="cadastro" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
                 <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
                 <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="cadastro" ></tco-input-text>
               </mat-list-item>
@@ -53,7 +53,7 @@
               <mat-list-item>
                 <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
                 <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="cadastro" style="margin-right: 40px;"></tco-input-text>
-                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="cadastro" [opcoes]="estados" ></tco-input-select>
+                <tco-input-select id="estado" titulo="Estado" controlName="estado" [formGroup]="cadastro" [opcoes]="estados" ></tco-input-select>
               </mat-list-item>
               <mat-list-item>
                 <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="cadastro" ></tco-input-text>
@@ -61,7 +61,7 @@
             </mat-list>
     </div>
     <div style="display:flex; justify-content: center;">
-        <button (click)="submit()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+        <button id="btnSalvar" (click)="submit()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
         <button type="reset" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
     </div>
 </div>

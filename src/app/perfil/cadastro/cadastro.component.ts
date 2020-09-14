@@ -32,7 +32,6 @@ export class CadastroComponent implements OnInit {
   }
 
   submit(): void {
-    alert("entrei no submit");
     this.cadastro.markAllAsTouched();
     console.log(this.cadastro);
     if (this.cadastro.invalid) {
@@ -42,11 +41,9 @@ export class CadastroComponent implements OnInit {
     const cliente = this.cadastro.getRawValue();
     console.log(cliente);
     if (this.id) {
-      alert("tenho id");
       // cliente.id = this.id;
       // this.editar(cliente);
     } else {
-      alert("sem id");
       const clienteCadastro: Cliente = {
         ativo: true,
         cpf: cliente.cpf,
@@ -64,7 +61,7 @@ export class CadastroComponent implements OnInit {
         telefone: [
           {
             ddd: cliente.ddd,
-            numero: cliente.numero,
+            numero: cliente.telefone,
             tipoTelefone: cliente.tipoTelefone
           }
         ],

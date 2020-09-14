@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Cliente } from '../shared/models/cliente';
 import { ConfigPrams } from '../shared/models/config-prams';
 import { ConfigParamsService } from './config-params.service';
+import { Usuario } from '../shared/models/usuario';
 
 const url = 'http://localhost:8080/clientes';
 
@@ -31,12 +32,16 @@ export class ClientesService {
     return this.http.get<Cliente[]>(url, {params: configPrams});
   }
 
-  visualizar(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(url + id);
+  visualizar(id: number): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(url + '?idCliente=' + id);
   }
 
   inativar(id: number): Observable<void> {
     return this.http.patch<void>(url + id,{});
+  }
+
+  efetivarAlteracaoSenha(usuario: Usuario): Observable<void>{
+    return this.http.put<void>(url + '/alterar-senha/' + usuario.id, usuario)
   }
 
   get clientes(): Cliente[] {
