@@ -12,7 +12,7 @@
                 </mat-list-item>
                 <mat-list-item>
                     <button id="btnSalvar" (click)="efetuarAlteracaoSenha()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
-                    <button type="reset" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
+                    <button type="reset" (click)="alterarSenha()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
                 </mat-list-item>
             </mat-list-item>
         </mat-list>
@@ -30,13 +30,14 @@
             </mat-list-item>
             <mat-list-item>
                 <button color="accent" mat-raised-button (click)="alterarCadastro()" style="margin-left: 50vh;">Alterar Cadastro</button>
+                <button color="accent" mat-raised-button (click)="incluirTelefone()" style="margin-left: 15vh;">Incluir Telefone</button>
             </mat-list-item>
             <mat-list *ngIf="isAlterarCadastro">
                 <mat-list-item>
                     <tco-input-text titulo="Nome Completo *" placeholder="Nome e Sobrenome" controlName="nome" [formGroup]="firstFormGroup"></tco-input-text>
                 </mat-list-item>
                 <mat-list-item>
-                    <tco-input-text titulo="CPF *" placeholder="123.456.789-10" controlName="cpf" [formGroup]="firstFormGroup"></tco-input-text>
+                    <mat-list-item > CPF:  {{cliente.cpf}} </mat-list-item>
                 </mat-list-item>
                 <mat-list-item>
                     <tco-input-select titulo="Gênero" controlName="genero" [formGroup]="firstFormGroup" [opcoes]="generos"></tco-input-select>
@@ -49,6 +50,22 @@
                     <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
                     <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="firstFormGroup">
                     </tco-input-text>
+                </mat-list-item>
+                <mat-list-item>
+                    <button id="btnSalvarCadastro" (click)="efetuarAlteracaoCadastro()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                    <button type="reset" (click)="alterarCadastro()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
+                </mat-list-item>
+            </mat-list>
+            <mat-list *ngIf="isIncluirTelefone">
+                <mat-list-item>
+                    <tco-input-select titulo="Tipo de telefone" controlName="tipoTelefone" [formGroup]="firstFormGroup" [opcoes]="telefones" style="margin-right: 40px;"></tco-input-select>
+                    <tco-input-text titulo="DDD *" controlName="ddd" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                    <tco-input-text titulo="Telefone *" controlName="telefone" [formGroup]="firstFormGroup">
+                    </tco-input-text>
+                </mat-list-item>
+                <mat-list-item>
+                    <button id="btnSalvarTelefone" (click)="efetuarInclusaoTelefone()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                    <button type="reset" (click)="incluirTelefone()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
                 </mat-list-item>
             </mat-list>
         </mat-list>
@@ -74,8 +91,9 @@
         </mat-list>
         <mat-list-item>
             <button color="accent" mat-raised-button (click)="alterarEnderecoCobranca()" style="margin-left: 50vh;">Alterar Endereço</button>
+            <button color="accent" mat-raised-button (click)="incluirEnderecoCobranca()" style="margin-left: 15vh;">Incluir Endereço</button>
         </mat-list-item>
-        <mat-list *ngIf="isAlterarEndereco">
+        <mat-list *ngIf="isAlterarEnderecoCobranca">
             <mat-list-item>
                 <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
             </mat-list-item>
@@ -96,6 +114,37 @@
             </mat-list-item>
             <mat-list-item>
                 <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <button id="btnSalvarEnderecoCobranca" (click)="efetuarAlteracaoEnderecoCobranca()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                <button type="reset" (click)="alterarEnderecoCobranca()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
+            </mat-list-item>
+        </mat-list>
+        <mat-list *ngIf="isIncluirEnderecoCobranca">
+            <mat-list-item>
+                <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Número *" controlName="numero" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="firstFormGroup" [opcoes]="estados">
+                </tco-input-select>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <button id="btnSalvar" (click)="efetuarAlteracaoEnderecoCobranca()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                <button type="reset" (click)="incluirEnderecoCobranca()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
             </mat-list-item>
         </mat-list>
         <mat-divider></mat-divider>
@@ -119,9 +168,10 @@
             <mat-list-item> CEP:  {{cliente.endereco[0].cep}} </mat-list-item>
         </mat-list>
         <mat-list-item>
-            <button color="accent" mat-raised-button (click)="alterarEnderecoCobranca()" style="margin-left: 50vh;">Alterar Endereço</button>
+            <button color="accent" mat-raised-button (click)="alterarEnderecoEntrega()" style="margin-left: 50vh;">Alterar Endereço</button>
+            <button color="accent" mat-raised-button (click)="incluirEnderecoEntrega()" style="margin-left: 15vh;">Incluir Endereço</button>
         </mat-list-item>
-        <mat-list *ngIf="isAlterarEndereco">
+        <mat-list *ngIf="isAlterarEnderecoEntrega">
             <mat-list-item>
                 <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
             </mat-list-item>
@@ -142,6 +192,37 @@
             </mat-list-item>
             <mat-list-item>
                 <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <button id="btnSalvar" (click)="efetuarAlteracaoEnderecoCobranca()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                <button type="reset" (click)="alterarEnderecoEntrega()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
+            </mat-list-item>
+        </mat-list>
+        <mat-list *ngIf="isIncluirEnderecoEntrega">
+            <mat-list-item>
+                <tco-input-text titulo="Descrição *" controlName="descricao" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Logradouro *" controlName="tipoLogradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Logradouro *" controlName="logradouro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Número *" controlName="numero" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Tipo de Residência " controlName="tipoResidencia" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Complemento e/ou Observações " controlName="observacoes" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="Bairro *" controlName="bairro" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-text titulo="Cidade *" controlName="cidade" [formGroup]="firstFormGroup" style="margin-right: 40px;"></tco-input-text>
+                <tco-input-select titulo="Estado" controlName="estado" [formGroup]="firstFormGroup" [opcoes]="estados">
+                </tco-input-select>
+            </mat-list-item>
+            <mat-list-item>
+                <tco-input-text titulo="CEP *" controlName="cep" [formGroup]="firstFormGroup"></tco-input-text>
+            </mat-list-item>
+            <mat-list-item>
+                <button id="btnSalvar" (click)="efetuarAlteracaoEnderecoEntrega()" color="accent" mat-raised-button style="margin:10px;">Salvar</button>
+                <button type="reset" (click)="incluirEnderecoEntrega()" color="warn" mat-raised-button style="margin:10px;">Cancelar</button>
             </mat-list-item>
         </mat-list>
     </mat-list>

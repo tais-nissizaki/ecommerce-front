@@ -5,6 +5,8 @@ import { Cliente } from '../shared/models/cliente';
 import { ConfigPrams } from '../shared/models/config-prams';
 import { ConfigParamsService } from './config-params.service';
 import { Usuario } from '../shared/models/usuario';
+import { Telefone } from '../shared/models/telefone';
+import { Endereco } from '../shared/models/endereco';
 
 const url = 'http://localhost:8080/clientes';
 
@@ -42,6 +44,30 @@ export class ClientesService {
 
   efetivarAlteracaoSenha(usuario: Usuario): Observable<void>{
     return this.http.put<void>(url + '/alterar-senha/' + usuario.id, usuario)
+  }
+
+  efetivarAlteracaoCadastro(cliente: Cliente): Observable<void>{
+    return this.http.put<void>(url + '/' + cliente.id + '/alterar-identificacao', cliente)
+  }
+
+  efetivarInclusaoTelefone(idCliente: number, telefone: Telefone): Observable<void>{
+    return this.http.post<void>(url+ '/cliente/'+ idCliente +'/incluir-telefone', telefone)
+  }
+
+  efetivarAlteracaoEnderecoCobranca(idCliente: number, endereco: Endereco): Observable<void>{
+    return this.http.put<void>(url+ '/' + idCliente + '/alterar-endereco', endereco)
+  }
+
+  efetivarInclusaoEnderecoCobranca(idCliente: number, endereco: Endereco): Observable<void>{
+    return this.http.post<void>(url+ '/cliente/'+ idCliente + '/incluir-endereco', endereco)
+  }
+
+  efetivarAlteracaoEnderecoEntrega(idCliente: number, endereco: Endereco): Observable<void>{
+    return this.http.put<void>(url+ '/' + idCliente + '/alterar-endereco', endereco)
+  }
+
+  efetivarInclusaoEnderecoEntrega(idCliente: number, endereco: Endereco): Observable<void>{
+    return this.http.post<void>(url+ '/cliente/'+ idCliente + '/incluir-endereco/', endereco)
   }
 
   get clientes(): Cliente[] {

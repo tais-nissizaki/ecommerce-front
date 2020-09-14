@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ClientesService } from 'src/app/core/clientes.service';
 import { Cliente } from 'src/app/shared/models/cliente';
 import { Usuario } from 'src/app/shared/models/usuario';
+import { Telefone } from 'src/app/shared/models/telefone';
+import { Endereco } from 'src/app/shared/models/endereco';
 
 @Component({
   selector: 'tco-dados',
@@ -16,7 +18,11 @@ export class DadosComponent implements OnInit {
   cliente: Cliente;
   isAlterarSenha: boolean;
   isAlterarCadastro: boolean;
-  isAlterarEndereco: boolean;
+  isIncluirTelefone: boolean;
+  isIncluirEnderecoCobranca: boolean;
+  isAlterarEnderecoCobranca: boolean;
+  isIncluirEnderecoEntrega: boolean;
+  isAlterarEnderecoEntrega: boolean;
 
   generos: string[] = ['FEMININO', 'MASCULINO', 'OUTROS'];
   telefones: string[] = ['RESIDENCIAL',	'CELULAR', 'COMERCIAL',	'OUTROS'];
@@ -36,7 +42,11 @@ export class DadosComponent implements OnInit {
     this.visualizar();
     this.isAlterarSenha=false;
     this.isAlterarCadastro=false;
-    this.isAlterarEndereco=false;
+    this.isIncluirTelefone=false;
+    this.isIncluirEnderecoCobranca= false;
+    this.isAlterarEnderecoCobranca= false;
+    this.isIncluirEnderecoEntrega= false;
+    this.isAlterarEnderecoEntrega= false;
     // this.criarFormulario(this.criarClienteEmBranco());
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
@@ -173,17 +183,183 @@ export class DadosComponent implements OnInit {
     }
     this.clienteService.efetivarAlteracaoSenha(usuario)
     .subscribe(() => {
-      alert("Alteração de senha efatuada com sucesso.")
+      alert("Alteração de senha efetuada com sucesso.")
     });
 
   }
 
   alterarCadastro(): void {
-    this.isAlterarCadastro=true;
+    if(!this.isAlterarCadastro){
+      this.isAlterarCadastro=true;
+    } else{
+      this.isAlterarCadastro=false;
+    } 
+  }
+
+  efetuarAlteracaoCadastro(): void {
+    const cliente: Cliente ={
+      id:this.cliente.id,
+      ativo: this.cliente.ativo,
+      cpf: this.cliente.cpf,
+      telefone: [{
+        id:this.cliente.telefone[0].id,
+        tipoTelefone:this.firstFormGroup.value.tipoTelefone,
+        ddd:this.firstFormGroup.value.ddd,
+        numero:this.firstFormGroup.value.telefone,
+      }],
+      usuario: this.cliente.usuario,
+      nome: {
+        nome: this.firstFormGroup.value.nome,
+      },
+      genero:this.firstFormGroup.value.genero,
+      dtNasc:this.firstFormGroup.value.dtNasc, 
+      endereco: this.cliente.endereco    
+    }
+    this.clienteService.efetivarAlteracaoCadastro(cliente)
+    .subscribe(() => {
+      alert("Alteração de cadastro efetuada com sucesso.")
+    });
   }
 
   alterarEnderecoCobranca(): void {
-    this.isAlterarEndereco=true;
+    if(!this.isAlterarEnderecoCobranca){
+      this.isAlterarEnderecoCobranca=true;
+    } else{
+      this.isAlterarEnderecoCobranca=false;
+    } 
   }
 
+  efetuarAlteracaoEnderecoCobranca(): void {
+    const endereco: Endereco ={
+      id: this.cliente.endereco[0].id,
+      tipoEndereco: "COBRANCA",
+      descricao: this.firstFormGroup.value.descricao,
+      tipoLogradouro: this.firstFormGroup.value.tipoLogradouro,
+      logradouro: this.firstFormGroup.value.logradouro,
+      numero: this.firstFormGroup.value.numero,
+      tipoResidencia: this.firstFormGroup.value.tipoResidencia,
+      observacoes: this.firstFormGroup.value.observacoes,
+      bairro: this.firstFormGroup.value.bairro,
+      cidade: {
+        cidade: this.firstFormGroup.value.cidade,
+        estado: this.firstFormGroup.value.estado
+      },
+      cep: this.firstFormGroup.value.cep
+    }
+    this.clienteService.efetivarAlteracaoEnderecoCobranca(this.cliente.id, endereco)
+    .subscribe(() => {
+      alert("Alteração de endereço efetuada com sucesso.")
+    });
+  }
+
+  alterarEnderecoEntrega(): void {
+    if(!this.isAlterarEnderecoEntrega){
+      this.isAlterarEnderecoEntrega=true;
+    } else{
+      this.isAlterarEnderecoEntrega=false;
+    } 
+  }
+
+  efetuarAlteracaoEnderecoEntrega(): void {
+    const endereco: Endereco ={
+      id: this.cliente.endereco[1].id,
+      tipoEndereco: "ENTREGA",
+      descricao: this.firstFormGroup.value.descricao,
+      tipoLogradouro: this.firstFormGroup.value.tipoLogradouro,
+      logradouro: this.firstFormGroup.value.logradouro,
+      numero: this.firstFormGroup.value.numero,
+      tipoResidencia: this.firstFormGroup.value.tipoResidencia,
+      observacoes: this.firstFormGroup.value.observacoes,
+      bairro: this.firstFormGroup.value.bairro,
+      cidade: {
+        cidade: this.firstFormGroup.value.cidade,
+        estado: this.firstFormGroup.value.estado
+      },
+      cep: this.firstFormGroup.value.cep
+    }
+    this.clienteService.efetivarAlteracaoEnderecoEntrega(this.cliente.id,endereco)
+    .subscribe(() => {
+      alert("Alteração de endereço efetuada com sucesso.")
+    });
+  }
+
+  incluirTelefone(): void {
+    if(!this.isIncluirTelefone){
+      this.isIncluirTelefone=true;
+    } else{
+      this.isIncluirTelefone=false;
+    } 
+  }
+  
+  efetuarInclusaoTelefone(): void {
+    const telefone: Telefone ={
+      tipoTelefone:this.firstFormGroup.value.tipoTelefone,
+      ddd:this.firstFormGroup.value.ddd,
+      numero:this.firstFormGroup.value.telefone,
+    }
+    this.clienteService.efetivarInclusaoTelefone(this.cliente.id, telefone)
+    .subscribe(() => {
+      alert("Alteração de telefone efetuada com sucesso.")
+    });
+  }
+
+  incluirEnderecoCobranca(): void {
+    if(!this.isIncluirEnderecoCobranca){
+      this.isIncluirEnderecoCobranca=true;
+    } else{
+      this.isIncluirEnderecoCobranca=false;
+    }
+  }
+
+  efetuarInclusaoEnderecoCobranca(): void {
+    const endereco: Endereco ={
+      tipoEndereco: "ENTREGA",
+      descricao: this.firstFormGroup.value.descricao,
+      tipoLogradouro: this.firstFormGroup.value.tipoLogradouro,
+      logradouro: this.firstFormGroup.value.logradouro,
+      numero: this.firstFormGroup.value.numero,
+      tipoResidencia: this.firstFormGroup.value.tipoResidencia,
+      observacoes: this.firstFormGroup.value.observacoes,
+      bairro: this.firstFormGroup.value.bairro,
+      cidade: {
+        cidade: this.firstFormGroup.value.cidade,
+        estado: this.firstFormGroup.value.estado
+      },
+      cep: this.firstFormGroup.value.cep
+    }
+    this.clienteService.efetivarInclusaoEnderecoCobranca(this.cliente.id, endereco)
+    .subscribe(() => {
+      alert("Inclusão de endereço efetuada com sucesso.")
+    });
+  }
+
+  incluirEnderecoEntrega(): void {
+    if(!this.isIncluirEnderecoEntrega){
+      this.isIncluirEnderecoEntrega=true;
+    } else{
+      this.isIncluirEnderecoEntrega=false;
+    }
+  }
+
+  efetuarInclusaoEnderecoEntrega(): void {
+    const endereco: Endereco ={
+      tipoEndereco: "ENTREGA",
+      descricao: this.firstFormGroup.value.descricao,
+      tipoLogradouro: this.firstFormGroup.value.tipoLogradouro,
+      logradouro: this.firstFormGroup.value.logradouro,
+      numero: this.firstFormGroup.value.numero,
+      tipoResidencia: this.firstFormGroup.value.tipoResidencia,
+      observacoes: this.firstFormGroup.value.observacoes,
+      bairro: this.firstFormGroup.value.bairro,
+      cidade: {
+        cidade: this.firstFormGroup.value.cidade,
+        estado: this.firstFormGroup.value.estado
+      },
+      cep: this.firstFormGroup.value.cep
+    }
+    this.clienteService.efetivarInclusaoEnderecoEntrega(this.cliente.id, endereco)
+    .subscribe(() => {
+      alert("Inclusão de endereço efetuada com sucesso.")
+    });
+  }
 }
