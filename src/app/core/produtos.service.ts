@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Produto } from '../shared/models/produto';
-import { ConfigPrams } from '../shared/models/config-prams';
+import { ConfigParams } from '../shared/models/config-prams';
 import { ConfigParamsService } from './config-params.service';
 
-const url = 'http://localhost:3000/produtos/';
+const url = '/api/produtos/';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +26,9 @@ export class ProdutosService {
     return this.http.put<Produto>(url + produto.id, produto);
   }
 
-  listar(config: ConfigPrams): Observable<Produto[]> {
-    const configPrams = this.configService.configurarParametros(config);
-    return this.http.get<Produto[]>(url, {params: configPrams});
+  listar(config: ConfigParams): Observable<Produto[]> {
+    const configParams = this.configService.configurarParametros(config);
+    return this.http.get<Produto[]>(url, {params: configParams});
   }
 
   visualizar(id: number): Observable<Produto> {

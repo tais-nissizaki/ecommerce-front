@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map, startWith, debounceTime } from "rxjs/operators"
 import { ProdutosService } from 'src/app/core/produtos.service';
 import { Produto } from '../../models/produto';
-import { ConfigPrams } from '../../models/config-prams';
+import { ConfigParams } from '../../models/config-prams';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -22,7 +22,7 @@ export class TopoComponent implements OnInit {
   
   filtrosListagem: FormGroup;
 
-  config: ConfigPrams = {
+  config: ConfigParams = {
     pagina: 0,
     limite: 4
   };

@@ -6,7 +6,7 @@
 
 ## Ambiente Local
 
-Execute `ng serve` para que o projeto suba localmente. Acesse a url `http://localhost:4200/`. O projeto já está com reload automático conforme as alterações que você realizar no código
+Execute `ng serve --proxy-config proxy.conf.json` para que o projeto suba localmente. Acesse a url `http://localhost:4200/`. O projeto já está com reload automático conforme as alterações que você realizar no código
 
 ## Simulando o Back-end
 

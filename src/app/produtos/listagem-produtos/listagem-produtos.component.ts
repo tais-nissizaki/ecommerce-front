@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { ProdutosService } from 'src/app/core/produtos.service';
 import { Produto } from 'src/app/shared/models/produto';
-import { ConfigPrams } from 'src/app/shared/models/config-prams';
+import { ConfigParams } from 'src/app/shared/models/config-prams';
+import { CarrinhosService } from 'src/app/core/carrinhos.service';
 
 @Component({
   selector: 'tco-listagem-produtos',
@@ -14,7 +15,7 @@ import { ConfigPrams } from 'src/app/shared/models/config-prams';
 export class ListagemProdutosComponent implements OnInit {
   readonly semFoto = 'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
 
-  config: ConfigPrams = {
+  config: ConfigParams = {
     pagina: 0,
     limite: 4
   };
@@ -22,6 +23,7 @@ export class ListagemProdutosComponent implements OnInit {
   categorias: Array<string>;
 
   constructor(private produtosService: ProdutosService,
+              private carrinhoService: CarrinhosService,
               private fb: FormBuilder,
               private router: Router) { }
 
@@ -56,8 +58,11 @@ export class ListagemProdutosComponent implements OnInit {
     this.router.navigateByUrl('/produtos/' + id);
   }
 
-  adicionarAoCarrinho(id: number) {
-    this.router.navigateByUrl('/carrinho');
+  adicionarAoCarrinho(produto: Produto) {
+    this.carrinhoService.adicionarAoCarrinho(produto, 1, 2)
+    .subscribe(() => {
+      this.router.navigateByUrl('/carrinho');
+    });
   }
 
   private listarProdutos(): void {

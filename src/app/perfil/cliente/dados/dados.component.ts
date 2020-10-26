@@ -38,7 +38,7 @@ export class DadosComponent implements OnInit {
   ngOnInit() {
     // this.cliente = this.criarClienteEmBranco();
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.id=2;
+    this.id=11;
     this.visualizar();
     this.isAlterarSenha=false;
     this.isAlterarCadastro=false;

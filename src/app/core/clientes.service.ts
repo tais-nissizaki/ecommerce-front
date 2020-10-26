@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Cliente } from '../shared/models/cliente';
-import { ConfigPrams } from '../shared/models/config-prams';
+import { ConfigParams } from '../shared/models/config-prams';
 import { ConfigParamsService } from './config-params.service';
 import { Usuario } from '../shared/models/usuario';
 import { Telefone } from '../shared/models/telefone';
 import { Endereco } from '../shared/models/endereco';
 
-const url = 'http://localhost:8080/clientes';
+const url = '/api/clientes';
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +29,9 @@ export class ClientesService {
     return this.http.put<Cliente>(url + cliente.id, cliente);
   }
 
-  listar(config: ConfigPrams): Observable<Cliente[]> {
-    const configPrams = this.configService.configurarParametros(config);
-    return this.http.get<Cliente[]>(url, {params: configPrams});
+  listar(config: ConfigParams): Observable<Cliente[]> {
+    const configParams = this.configService.configurarParametros(config);
+    return this.http.get<Cliente[]>(url, {params: configParams});
   }
 
   visualizar(id: number): Observable<Cliente[]> {

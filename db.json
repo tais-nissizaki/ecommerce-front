@@ -161,17 +161,17 @@
         "id": 1,
         "ativo": true,
         "confirmaSenha": "abcABC!@#",
-        "login": "MARIA.SILVA@TESTE.COM",
+        "login": "MARIANA.SILVA@TESTE.COM",
         "senha": "abcABC!@#"
       },
       "id": 1,
       "nome": {
-        "nome": "MARIA DA SILVA"
+        "nome": "MARIANA DA SILVA"
       },
       "genero": "FEMININO", 
       "ativo": true,
-      "cpf": "829.955.110-22",
-      "dtNasc": "1987-09-12",
+      "cpf": "006.420.080-94",
+      "dtNasc": "1987-05-18",
       "telefone": [
         {
           "id": 1,
@@ -220,17 +220,17 @@
         "id": 2,
         "ativo": true,
         "confirmaSenha": "abcABC!@#",
-        "login": "JOAO.SILVA@TESTE.COM",
+        "login": "JOAO.SOUZA@TESTE.COM",
         "senha": "abcABC!@#"
       },
       "id": 2,
       "nome": {
-        "nome": "JOÃO SILVA"
+        "nome": "JOÃO SOUZA"
       },
       "genero": "MASCULINO", 
       "ativo": true,
-      "cpf": "435.156.320-69",
-      "dtNasc": "1983-03-05",
+      "cpf": "909.651.551-13",
+      "dtNasc": "1983-12-05",
       "telefone": [
         {
           "id": 2,
@@ -279,12 +279,12 @@
         "id": 3,
         "ativo": true,
         "confirmaSenha": "abcABC!@#",
-        "login": "ZE.COUVES@TESTE.COM",
+        "login": "ZE.CARDOSO@TESTE.COM",
         "senha": "abcABC!@#"
       },
       "id": 3,
       "nome": {
-        "nome": "ZÉ DAS COUVES"
+        "nome": "JOSE CARDOSO"
       },
       "genero": "OUTROS", 
       "ativo": true,
